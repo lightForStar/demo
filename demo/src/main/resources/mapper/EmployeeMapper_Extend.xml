@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuorong.dao.EmployeeMapper" >
+
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from employee
+  </select>
+
+  <select id="listEmployee" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from employee
+    WHERE 1=1
+    <if test="mobileOrName!=null">
+      AND phone =#{mobileOrName} OR `name` = #{mobileOrName}
+    </if>
+  </select>
+
+</mapper>
