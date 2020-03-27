@@ -1,5 +1,8 @@
 package com.tuorong.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Employee {
@@ -9,6 +12,8 @@ public class Employee {
 
     private String gender;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date birthday;
 
     private String idcard;
@@ -40,7 +45,8 @@ public class Employee {
     private String specialty;
 
     private String school;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date begindate;
 
     private String workstate;
@@ -48,13 +54,17 @@ public class Employee {
     private String workid;
 
     private Double contractterm;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date conversiontime;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date notworkdate;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date begincontract;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date endcontract;
 
     private Integer workage;
@@ -83,7 +93,7 @@ public class Employee {
         this.gender = gender == null ? null : gender.trim();
     }
 
-    public Date getBirthday() {
+    public  Date getBirthday() {
         return birthday;
     }
 
@@ -281,5 +291,39 @@ public class Employee {
 
     public void setWorkage(Integer workage) {
         this.workage = workage;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthday=" + birthday +
+                ", idcard='" + idcard + '\'' +
+                ", wedlock='" + wedlock + '\'' +
+                ", nationid=" + nationid +
+                ", nativeplace='" + nativeplace + '\'' +
+                ", politicid=" + politicid +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", departmentid=" + departmentid +
+                ", joblevelid=" + joblevelid +
+                ", posid=" + posid +
+                ", engageform='" + engageform + '\'' +
+                ", tiptopdegree='" + tiptopdegree + '\'' +
+                ", specialty='" + specialty + '\'' +
+                ", school='" + school + '\'' +
+                ", begindate=" + begindate +
+                ", workstate='" + workstate + '\'' +
+                ", workid='" + workid + '\'' +
+                ", contractterm=" + contractterm +
+                ", conversiontime=" + conversiontime +
+                ", notworkdate=" + notworkdate +
+                ", begincontract=" + begincontract +
+                ", endcontract=" + endcontract +
+                ", workage=" + workage +
+                '}';
     }
 }

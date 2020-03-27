@@ -30,40 +30,19 @@
     <script type="text/javascript">
         window.onload=CurrentTime;
         function CurrentTime(){
-            var now = new Date();
-            var year = now.getFullYear();       //年
-            var month = now.getMonth() + 1;     //月
-            var day = now.getDate();            //日
-            var hh = now.getHours();            //时
-            var mm = now.getMinutes();          //分
-
-            var clock = year + " - ";
-            if(month < 10)
-                clock += "0";
-            clock += month + " - ";
-            if(day < 10)
-                clock += "0";
-            clock += day + "&nbsp;&nbsp;&nbsp;";
-            if(hh < 10)
-                clock += "0";
-            clock += hh + " : ";
-            if (mm < 10)
-                clock += '0';
-            clock += mm;
-            document.getElementById("time").innerHTML=clock;
-            if(hh>=6&&hh<=12){
-                document.getElementById("sayhi").innerHTML="欢迎使用员工管理系统";
-            }
-            else if(hh>=13&&hh<=16){
-                document.getElementById("sayhi").innerHTML="欢迎使用员工管理系统";
-            }
-            else if(hh>=17&&hh<=18){
-                document.getElementById("sayhi").innerHTML="欢迎使用员工管理系统";
-            }
-            else{
-                document.getElementById("sayhi").innerHTML="欢迎使用员工管理系统";
-            }
+            //获取当前时间
+            var date = new Date();
+            //格式化为本地时间格式
+            var date1 = date.toLocaleString();
+            //获取div
+            var div1 = document.getElementById("time");
+            //将时间写入div
+            div1.innerHTML = date1;
+            //将时间写入div
+            document.getElementById("sayhi").innerHTML="欢迎使用员工管理系统";
         }
+        //使用定时器每秒向div写入当前时间
+        setInterval("CurrentTime()",1000);
     </script>
 </head>
 <body>

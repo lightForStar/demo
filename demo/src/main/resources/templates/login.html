@@ -23,9 +23,9 @@
     <div id="darkbannerwrap"></div>
 
     <form method="post" class="layui-form"  id="login">
-        <input name="username" placeholder="用户名" type="text" lay-verify="required" class="layui-input">
+        <input name="loginname" placeholder="账户名" type="text" lay-verify="required" class="layui-input">
         <hr class="hr15">
-        <input name="password" lay-verify="required" placeholder="密码" type="password" class="layui-input">
+        <input name="loginpwd" lay-verify="required" placeholder="密码" type="password" class="layui-input">
         <hr class="hr15">
         <input value="登录"  lay-filter="login" style="width:100%;" type="button" onclick="login()">
         <hr class="hr20">
@@ -37,7 +37,7 @@
         var data = $("#login").serialize();
 
         $.ajax({
-            url: '/demo/login',
+            url: '/demo/login.action',
             data: data,
             type: 'POST',
             dataType: 'json',
@@ -57,12 +57,14 @@
             layer.msg("出错了");
         }
 
-        function succFunction(tt) {
-            if (tt.status == 200){
+        function succFunction(result) {
+            if (result.status == 200){
                 layer.msg("登录成功");
                 setTimeout('delayer()',2000);
                 console.log("进来了");
                 window.location.href = "/demo/page/index"
+            }else {
+                layer.msg(result.msg)
             }
 
         }

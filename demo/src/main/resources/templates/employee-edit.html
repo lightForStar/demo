@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>同城快递系统</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="shortcut icon" href="/demo/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/demo/css/font.css">
+    <link rel="stylesheet" href="/demo/css/xadmin.css">
+    <script type="text/javascript" src="/demo/js/jquery-3.2.1.min.js"></script>
+    <script src="/demo/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/demo/js/xadmin.js"></script>
+<style>
+.layui-inline{
+    margin: 15px 10px;
+}
+</style>
+</head>
+
+<body>
+<div class="x-body">
+    <form class="layui-form layui-form-pane" id = "form">
+      <div class="layui-form-item">
+      <input name="id" value="${employee.id?c}" hidden="hidden">
+        <div class="layui-inline">
+          <label class="layui-form-label">员工姓名</label>
+          <div class="layui-input-inline">
+            <input type="text" name="name" lay-verify="required" class="layui-input" value="${employee.name}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">员工性别</label>
+          <div class="layui-input-inline">
+            <input type="text" lay-verify="required" name="gender"
+                                          class="layui-input" value="${employee.gender}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">籍贯</label>
+          <div class="layui-input-inline">
+            <input type="text" name="nativeplace" lay-verify="required" class="layui-input" value="${employee.nativeplace}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">工号</label>
+          <div class="layui-input-inline">
+            <input type="text" name="workid" lay-verify="required" class="layui-input"  value="${employee.workid}">
+          </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">身份证号</label>
+            <div class="layui-input-inline">
+              <input type="text" name="idcard" lay-verify="required"  class="layui-input"  value="${employee.idcard}">
+            </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">手机号</label>
+          <div class="layui-input-inline">
+            <input type="tel" name="phone" lay-verify="required|phone" class="layui-input" value="${employee.phone}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">邮箱</label>
+          <div class="layui-input-inline">
+            <input type="text" name="email" lay-verify="email" class="layui-input" value="${employee.email}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">出生日期</label>
+          <div class="layui-input-inline">
+            <input type="text" name="birthday" lay-verify="date" placeholder="yyyy-MM-dd" class="layui-input" value="${employee.birthday?string('yyyy-MM-dd')}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">联系地址</label>
+          <div class="layui-input-inline">
+            <input type="text" name="address" lay-verify="required" class="layui-input" value="${employee.address}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">聘用形式</label>
+          <div class="layui-input-inline">
+            <input type="text" name="engageform" lay-verify="required" class="layui-input" value="${employee.engageform}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">最高学历</label>
+          <div class="layui-input-inline">
+            <input type="text" name="tiptopdegree" lay-verify="required" class="layui-input" value="${employee.tiptopdegree}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">毕业院校</label>
+          <div class="layui-input-inline">
+            <input type="text" name="school" lay-verify="required" class="layui-input" value="${employee.school}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">工作状态</label>
+          <div class="layui-input-inline">
+            <input type="text" name="workstate" lay-verify="required" class="layui-input" value="${employee.workstate}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">合同期限</label>
+          <div class="layui-input-inline">
+            <input type="text" name="contractterm" lay-verify="required" class="layui-input" value="${employee.contractterm}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">合同开始</label>
+          <div class="layui-input-inline">
+            <input type="text" name="begincontract" lay-verify="date" placeholder="yyyy-MM-dd"class="layui-input"  value="${employee.begincontract?string('yyyy-MM-dd')}">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">合同结束</label>
+          <div class="layui-input-inline">
+            <input type="text" name="endcontract" lay-verify="date" placeholder="yyyy-MM-dd" class="layui-input"  value="${employee.endcontract?string('yyyy-MM-dd')}">
+          </div>
+        </div>
+      </div><br/>
+      <div class="layui-form-item">
+          <div class="layui-input-block" style="width:180px; margin:5px auto;">
+              <button class="layui-btn" lay-submit="" lay-filter="updateEmployee"  type="button" >提交</button>
+              <button type="reset" class="layui-btn layui-btn-primary"  type="button" >重置</button>
+          </div>
+      </div>
+    </form>
+
+</div>
+
+<script>
+var id = '${employee.id}';
+layui.use(['form'], function() {
+    $ = layui.$;
+    var form = layui.form;
+//    function updateEmployee() {
+//        var dataParam = $("#form").serialize();
+//        $.ajax({
+//            url: '/demo/editEmployee.action',
+//            data: dataParam,
+//            type: 'POST',
+//            dataType: 'json',
+//            cache: false,
+//            beforeSend: LoadFunction, //加载执行方法
+//            error: erryFunction,  //错误执行方法
+//            success: succFunction //成功执行方法
+//        });
+//        function LoadFunction() {
+//            layer.msg('加载中', {
+//                icon: 16
+//                , shade: 0.01
+//            });
+//        }
+//
+//        function erryFunction() {
+//            layer.msg("出错了");
+//        }
+//
+//        function succFunction(result) {
+//            if (result.status == 200) {
+//                    layer.msg('修改成功!', {icon: 6, time: 2000});
+//            } else {
+//                layer.msg(result.msg, {icon: 5, time: 2000});
+//            }
+//        }
+//     }
+     form.on('submit(updateEmployee)', function (data) {
+         parent.layer.confirm('确认推送吗',{btn:['确认','取消']},function () {
+             var dataParam = $("#form").serialize();
+             $.ajax({
+                 url: '/demo/editEmployee.action',
+                 data: dataParam,
+                 method: 'post',
+                 dataType: 'JSON',
+                 success: function (res) {
+                     if (res.status === 200) {
+                         parent.layer.msg('操作成功!', {icon: 6, time: 2000});
+                     }
+                     else
+                         parent.layer.msg('操作失败!', {icon: 6, time: 2000});
+                 },
+                 error: function (data) {
+                     parent.layer.msg('出错了', {time: 3000});
+                 },
+                 beforeSend: function () {
+                     parent.layer.msg('加载中', {
+                         icon: 16
+                         , shade: 0.01
+                     });
+                 }
+             });
+             return false;
+         })
+     })
+
+});
+
+</script>
+</body>
+
+</html>

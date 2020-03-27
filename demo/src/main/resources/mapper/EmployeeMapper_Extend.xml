@@ -15,7 +15,7 @@
     from employee
     WHERE 1=1
     <if test="mobileOrName!=null">
-      AND phone =#{mobileOrName} OR `name` = #{mobileOrName}
+      AND (employee.name LIKE '%${mobileOrName}%' OR phone LIKE '%${mobileOrName}%')
     </if>
   </select>
 

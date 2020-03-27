@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuorong.dao.AdminMapper" >
+
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from admin
+  </select>
+
+  <select id="listAdmin" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from admin
+    WHERE 1=1
+    <if test="mobileOrName!=null">
+      AND hrphone LIKE '%${mobileOrName}%' OR hrname LIKE '%${mobileOrName}%'
+    </if>
+  </select>
+
+  <select id="selAdminLoginname" resultType="String" parameterType="String">
+    select
+    loginname
+    from admin
+    WHERE
+     loginname =#{loginname}
+  </select>
+
+  <select id="selectAdminByName" resultMap="BaseResultMap">
+    select
+    *
+    from admin
+    WHERE
+    loginname =#{loginname}
+  </select>
+
+  <select id="selAdminPwd" resultType="String" parameterType="String">
+    select
+    loginpwd
+    from admin
+    WHERE
+     loginname =#{loginname}
+  </select>
+
+</mapper>

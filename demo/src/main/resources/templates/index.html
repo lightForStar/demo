@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="/demo/js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 <p>这是一个html页面</p>
@@ -20,8 +21,44 @@
         </tr>
     </#list>
 
+    <button type="button"  id="myButton" onclick="sendRequest()">点我触发get请求</button>
+    <button type="button"   onclick="sendPostRequest()">点我触发post请求</button>
+    <button type="button"   onclick="sendAjaxRequest()">点我触发ajax请求</button>
 
 </table>
+<script>
+    function sendRequest(){
+        $.get("/demo/test/getDemoAjax?a=1",function (status,data) {
+            alert("数据: " + data + "\n状态: " + status);
+        });
+    }
+    function sendPostRequest(){
+        $.post("/demo/test/postDemoAjax",{name:"张三",content:"test"},function (status,data) {
+            alert("数据: " + data + "\n状态: " + status);
+        });
+    }
 
+    function sendAjaxRequest(){
+        $.ajax({
+            url:"/demo/test/ajaxRequest", <!-- 指定服务器的请求地址 -->
+            data:{name:"这是一串发送的数据"}, <!-- 指定发送的数据，默认以表单的形式发送，如果要修改就得设置请求头的application  -->
+            dataType:"text",
+            type:"POST",
+            success:success,
+            error:error,
+            beforeSend:load
+        });
+        function success(result) {
+            alert("返回的数据："+result);
+        }
+        function error(e) {
+            alert("失败了，返回的异常："+e.message);
+        }
+        function load() {
+            alert("加载中。。。");
+        }
+    }
+
+</script>
 </body>
 </html>

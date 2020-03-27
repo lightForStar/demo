@@ -29,4 +29,11 @@ public class ResultUtil {
         result.setData(null);
         return result;
     }
+
+    public static Result<Object> fail(String message){
+        result.setStatus(500);
+        result.setMsg(message);
+        result.setData(null);
+        return result;
+    }
 }
