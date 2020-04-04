@@ -1,6 +1,5 @@
 # SpringBoot整合Mybatis
 ## 1、引入依赖文件
-建议使用1.3.2版本，这个版本支持localdatetime时间类型
 ```xml
         <!--springboot的web模块-->
         <dependency>
